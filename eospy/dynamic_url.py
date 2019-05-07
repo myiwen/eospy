@@ -34,9 +34,9 @@ class DynamicUrl :
         r.raise_for_status()
         return r.json()
 
-    def post_url(self, url, params=None, json=None, data=None, timeout=30) :
+    def post_url(self, url, params=None, json=None, data=None, timeout=30, headers=None) :
         # post request
-        r = requests.post(url,params=params, json=json, data=data, timeout=timeout)
+        r = requests.post(url,params=params, json=json, data=data, timeout=timeout, headers=headers)
         try :
             r.raise_for_status()
         except :
