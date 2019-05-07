@@ -169,8 +169,10 @@ class Cleos :
 
     def abi_json_to_bin(self, code, action, args, timeout=30) :
         ''' '''
-        json = {'code':code, 'action':action, 'args': args}
-        return self.post('chain.abi_json_to_bin', params=None, json=json, timeout=timeout)
+        json_data = {'code':code, 'action':action, 'args': args}
+        data = json.dumps(json_data, ensure_ascii=False).encode('utf8')
+        headers = {'Content-Type': 'application/json'}
+        return self.post('chain.abi_json_to_bin', params=None, data=data, timeout=timeout, headers=headers)
         
     #####
     # create keys
